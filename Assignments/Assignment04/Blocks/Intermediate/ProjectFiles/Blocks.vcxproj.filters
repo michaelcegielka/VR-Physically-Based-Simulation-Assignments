@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\Blocks.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Blocks.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\BlocksEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\steamvr_ue_editor_app.json">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Config\SteamVRBindings">
+      <UniqueIdentifier>{1B93D84C-CB49-3203-A6C3-0FFD66155A6E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\SteamVRBindings\gamepad.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\holographic_controller.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\indexhmd.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\knuckles.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\oculus_touch.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\rift.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\steamvr_manifest.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_controller.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_cosmos_controller.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_pro.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <None Include="..\..\Config\SteamVRBindings\vive_tracker_camera.json">
+      <Filter>Config\SteamVRBindings</Filter>
+    </None>
+    <Filter Include="Source\Blocks">
+      <UniqueIdentifier>{A1A98F64-EAB6-3913-A18F-1692F804DDAA}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Blocks\Blocks.Build.cs">
+      <Filter>Source\Blocks</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\Blocks\Blocks.cpp">
+      <Filter>Source\Blocks</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Blocks\Blocks.h">
+      <Filter>Source\Blocks</Filter>
+    </ClInclude>
+    <Filter Include="Source\Blocks\Base">
+      <UniqueIdentifier>{F752B047-A7D5-313C-B766-5DC9F5CC81AC}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\Blocks\Base\BlockBaseActor.cpp">
+      <Filter>Source\Blocks\Base</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Blocks\Base\BlockBaseActor.h">
+      <Filter>Source\Blocks\Base</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Blocks\Base\BlockBaseComponent.cpp">
+      <Filter>Source\Blocks\Base</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Blocks\Base\BlockBaseComponent.h">
+      <Filter>Source\Blocks\Base</Filter>
+    </ClInclude>
+    <Filter Include="Source\Blocks\Blocks">
+      <UniqueIdentifier>{414E3504-DB32-300E-BB91-256524769C77}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\Blocks\Blocks\Block1x4Actor.h">
+      <Filter>Source\Blocks\Blocks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Blocks\Blocks\Block20x20Actor.h">
+      <Filter>Source\Blocks\Blocks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Blocks\Blocks\Block2x2Actor.h">
+      <Filter>Source\Blocks\Blocks</Filter>
+    </ClInclude>
+    <Filter Include="Source\Blocks\Interface">
+      <UniqueIdentifier>{20F36E6E-499C-3931-A1A5-F0670E5A9E8C}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\Blocks\Interface\PickupActorInterface.h">
+      <Filter>Source\Blocks\Interface</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,30 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\domin\\downloads\\blocks\\blocks\\intermediate\\build\\win64\\unrealeditor\\inc\\blocks\\uht\\blockbaseactor.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\domin\\downloads\\blocks\\blocks\\intermediate\\build\\win64\\x64\\blockseditor\\development\\engine\\sharedpch.engine.cpp17.inclorderunreal5_0.h.pch",
+        "Includes": [
+            "c:\\users\\domin\\downloads\\blocks\\blocks\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\blocks\\definitions.blocks.h",
+            "c:\\users\\domin\\downloads\\blocks\\blocks\\source\\blocks\\base\\blockbaseactor.h",
+            "e:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\kismet\\gameplaystatics.h",
+            "e:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\kismet\\kismetsystemlibrary.h",
+            "e:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\coreuobject\\public\\uobject\\propertyaccessutil.h",
+            "e:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\coreuobject\\public\\assetregistry\\arfilter.h",
+            "e:\\program files\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\kismetsystemlibrary.generated.h",
+            "e:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\sound\\dialoguetypes.h",
+            "e:\\program files\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\dialoguetypes.generated.h",
+            "e:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\kismet\\gameplaystaticstypes.h",
+            "e:\\program files\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gameplaystaticstypes.generated.h",
+            "e:\\program files\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gameplaystatics.generated.h",
+            "c:\\users\\domin\\downloads\\blocks\\blocks\\source\\blocks\\base\\blockbasecomponent.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.36.32532\\include\\iostream",
+            "c:\\users\\domin\\downloads\\blocks\\blocks\\intermediate\\build\\win64\\unrealeditor\\inc\\blocks\\uht\\blockbasecomponent.generated.h",
+            "c:\\users\\domin\\downloads\\blocks\\blocks\\source\\blocks\\interface\\pickupactorinterface.h",
+            "c:\\users\\domin\\downloads\\blocks\\blocks\\intermediate\\build\\win64\\unrealeditor\\inc\\blocks\\uht\\pickupactorinterface.generated.h",
+            "c:\\users\\domin\\downloads\\blocks\\blocks\\intermediate\\build\\win64\\unrealeditor\\inc\\blocks\\uht\\blockbaseactor.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

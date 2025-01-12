@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\domin\\downloads\\blocks\\blocks\\source\\blocks\\blocks.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\domin\\downloads\\blocks\\blocks\\intermediate\\build\\win64\\x64\\blockseditor\\development\\engine\\sharedpch.engine.cpp17.inclorderunreal5_0.h.pch",
+        "Includes": [
+            "c:\\users\\domin\\downloads\\blocks\\blocks\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\blocks\\definitions.blocks.h",
+            "c:\\users\\domin\\downloads\\blocks\\blocks\\source\\blocks\\blocks.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
