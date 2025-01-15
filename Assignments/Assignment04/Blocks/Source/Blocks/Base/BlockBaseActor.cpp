@@ -50,6 +50,8 @@ void ABlockBaseActor::Tick(float DeltaTime)
 			// currentVolume().debugDraw(GetWorld(), GetTransform(), 0.15f);
 			// Elem.Key->currentVolume().debugDraw(GetWorld(), Elem.Key->getBlockTransformRelativeTo(this, Elem.Value) * GetTransform(), 0.15f);
 
+			// IN Blurprint SPAWN GHOST (HIGHLIGHT), when DROPPED -> fahre mit MERGETO FOrt
+			//				,when MOVED AWAY -> STOP und DESTROY GHOST
 			if (Elem.Key->mergeTo(this)) {
 				// If you want to do something when merging is performed, place it here.
 			}
@@ -93,6 +95,13 @@ void ABlockBaseActor::Drop_Implementation()
 	K2_DetachFromActor(EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld);
 }
 
+bool ABlockBaseActor::setMergeRemoved(bool isMergeRemoved)
+{
+	mergeRemoved = isMergeRemoved;
+	
+	return true;
+}
+
 VoxelVolume ABlockBaseActor::currentVolume() {
 	VoxelVolume result;
 
@@ -105,7 +114,7 @@ VoxelVolume ABlockBaseActor::currentVolume() {
 	return result;
 }
 
-bool ABlockBaseActor::isMergableTo(ABlockBaseActor* actor) {
+ bool ABlockBaseActor::isMergableTo(ABlockBaseActor* actor) {
 	VoxelVolume targetVolume = actor->currentVolume();
 	VoxelVolume sourceVolume = currentVolume().TransformTo(FBlockTransform(getBlockTransformRelativeTo(actor)));
 

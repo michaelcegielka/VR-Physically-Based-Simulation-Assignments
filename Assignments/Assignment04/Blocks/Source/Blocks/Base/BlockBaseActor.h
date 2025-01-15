@@ -36,14 +36,15 @@ public:
 		TMap<UBlockBaseComponent*, FBlockTransform> blocks;
 
 	/* Stores the overlapping actors temporary, can be used for highlighting */
-	TMap<ABlockBaseActor*, UBlockBaseComponent*> overlappingActors;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Blocks)	
+		TMap<ABlockBaseActor*, UBlockBaseComponent*> overlappingActors;
 
 	/* Called when another component collides roughly with a component of this actor */
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void OnOverlapBegin(UPrimitiveComponent* t, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 	/* Called when another component collides roughly with a component of this actor */
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void OnOverlapEnd(UPrimitiveComponent* t, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 	/* Called from the BP_MotionController if the player grabs this actor */
@@ -51,6 +52,9 @@ public:
 
 	/* Called from the BP_MotionController if the player releases this actor after grabbing it */
 	void Drop_Implementation() override;
+
+	UFUNCTION(BlueprintCallable)
+	bool setMergeRemoved(bool isMergeRemoved);
 
 protected:
 	// Called when the game starts or when spawned
@@ -65,6 +69,7 @@ private:
 	VoxelVolume currentVolume();
 
 	/* Checks whether this actor can be merged to the given actor based on the position and orientation of both */
+	UFUNCTION(BlueprintCallable)
 	bool isMergableTo(ABlockBaseActor* actor);
 
 	/* Returns the heuristly best fitting transformation of this actor relative to the given actor, already "quantized" so that the blocks 
@@ -77,14 +82,17 @@ private:
 	FTransform getBlockTransformRelativeTo(ABlockBaseActor* actor);
 
 	/* Returns the dimension of the voxels (e.g. 2x2x2 for the Block2x2Actor. Keep in mind that a voxel has a size of 1x1x0.5). */
+	UFUNCTION(BlueprintCallable)
 	FIntVector GetVoxelDimension();
 
 	/* Returns the volume of a voxel volume. This method already divides the z-axis by 2, so that the result is the real volume in cm^3 */
+	UFUNCTION(BlueprintCallable)
 	float getVoxelDimensionVolume();
 
 	/* Merges all the blocks of one actor to the given actor by copying them and deletes itself afterwards. So don't use a reference to
 	* this BlockBaseActor after you merged it to another actor.
 	*/
+	UFUNCTION(BlueprintCallable)
 	bool mergeTo(ABlockBaseActor* actor);
 
 	/* Stores whether this actor was removed from the world previously.
