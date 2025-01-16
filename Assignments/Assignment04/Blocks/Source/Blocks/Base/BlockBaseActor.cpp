@@ -62,6 +62,7 @@ void ABlockBaseActor::Tick(float DeltaTime)
 
 }
 
+
 void ABlockBaseActor::OnOverlapBegin(class UPrimitiveComponent* Comp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (OtherActor && (OtherActor != this) && OtherComp && Comp)
