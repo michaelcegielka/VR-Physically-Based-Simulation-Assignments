@@ -1,17 +1,37 @@
 #include "GhostPreview.h"
 #include "Components/StaticMeshComponent.h"
+#include "UObject/ConstructorHelpers.h"
 
-AGhostPreview::AGhostPreview()
+GhostPreview::GhostPreview()
 {
     PrimaryActorTick.bCanEverTick = false;
 
     GhostMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GhostMesh"));
     RootComponent = GhostMesh;
 
-    // Collision ausschalten (wir wollen ja nur eine Vorschau):
     GhostMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
-    // Du könntest hier ggf. ein halbtransparentes Material setzen,
-    // entweder direkt oder später in Blueprint:
-    // GhostMesh->SetMaterial(0, GhostMaterialRef);
+
+    static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("StaticMesh'xyz'"));
+    if (MeshAsset.Succeeded())
+    {
+        GhostMesh->SetStaticMesh(MeshAsset.Object);
+    }
+    else
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Ghost Mesh not found!"));
+    }
+
+    static ConstructorHelpers::FObjectFinder<UMaterialInterface> MaterialAsset(TEXT("Material'/xyz'"));
+    if (MaterialAsset.Succeeded())
+    {
+        GhostMaterial = MaterialAsset.Object;
+        GhostMesh->SetMaterial(0, GhostMaterial);
+    }
+    else
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Ghost Material not found."));
+    }
+
+    GhostMesh->SetVisibility(false);
 }

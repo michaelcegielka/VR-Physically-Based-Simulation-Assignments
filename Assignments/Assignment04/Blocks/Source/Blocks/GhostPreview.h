@@ -5,17 +5,16 @@
 #include "GhostPreview.generated.h"
 
 UCLASS()
-class BLOCKS_API AGhostPreview : public AActor
+class BLOCKS_API GhostPreview : public AActor
 {
     GENERATED_BODY()
 
 public:
-    AGhostPreview();
+    GhostPreview();
 
-    // Eine oder mehrere Mesh-Komponenten, je nachdem ob dein Ghost nur ein Mesh 
-    // oder mehrere Komponenten hat. Hier als Beispiel ein einzelnes Mesh:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Ghost")
     UStaticMeshComponent* GhostMesh;
 
-    // Du könntest hier Referenzen auf den "echten" Block oder andere Dinge speichern, falls nötig.
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Ghost")
+    UMaterialInterface* GhostMaterial;
 };
