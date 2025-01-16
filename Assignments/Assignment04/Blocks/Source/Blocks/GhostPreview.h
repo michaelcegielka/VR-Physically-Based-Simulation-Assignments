@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -9,18 +7,15 @@
 UCLASS()
 class BLOCKS_API AGhostPreview : public AActor
 {
-	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
-	AGhostPreview();
+    GENERATED_BODY()
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+public:
+    AGhostPreview();
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+    // Eine oder mehrere Mesh-Komponenten, je nachdem ob dein Ghost nur ein Mesh 
+    // oder mehrere Komponenten hat. Hier als Beispiel ein einzelnes Mesh:
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Ghost")
+    UStaticMeshComponent* GhostMesh;
 
+    // Du könntest hier Referenzen auf den "echten" Block oder andere Dinge speichern, falls nötig.
 };

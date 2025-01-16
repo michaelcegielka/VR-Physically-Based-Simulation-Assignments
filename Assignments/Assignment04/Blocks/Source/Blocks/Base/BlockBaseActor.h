@@ -1,7 +1,7 @@
-/* ©CGVR 2021. Author: Andre Muehlenbrock 
-* 
-* A BlockBaseActor is a movable and grabbable actor, which can have several BlockBaseComponets.
-*/
+/* ©CGVR 2021. Author: Andre Muehlenbrock
+ *
+ * A BlockBaseActor is a movable and grabbable actor, which can have several BlockBaseComponets.
+ */
 
 #pragma once
 
@@ -12,32 +12,34 @@
 #include "BlockBaseComponent.h"
 #include "../Interface/PickupActorInterface.h"
 
+#include "AGhostPreview.h" // <-- Neu: für Ghost-Preview
+
 #include "BlockBaseActor.generated.h"
 
 UCLASS(Blueprintable)
 class BLOCKS_API ABlockBaseActor : public AActor, public IPickupActorInterface
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	/* Initializes the scene root */
 	ABlockBaseActor();
 
 	/* The root component */
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Blocks)
-		USceneComponent* PrimitiveComponentRoot;
+	USceneComponent* PrimitiveComponentRoot;
 
 	/* The initial assigned clamping block */
 	UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = Blocks)
-		UBlockBaseComponent* BlockBaseComponent;
+	UBlockBaseComponent* BlockBaseComponent;
 
 	/* All block components mapped to their current position relative to this actor */
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Blocks)
-		TMap<UBlockBaseComponent*, FBlockTransform> blocks;
+	TMap<UBlockBaseComponent*, FBlockTransform> blocks;
 
 	/* Stores the overlapping actors temporary, can be used for highlighting */
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Blocks)	
-		TMap<ABlockBaseActor*, UBlockBaseComponent*> overlappingActors;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Blocks)
+	TMap<ABlockBaseActor*, UBlockBaseComponent*> overlappingActors;
 
 	/* Called when another component collides roughly with a component of this actor */
 	UFUNCTION(BlueprintCallable)
@@ -60,7 +62,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -72,31 +74,52 @@ private:
 	UFUNCTION(BlueprintCallable)
 	bool isMergableTo(ABlockBaseActor* actor);
 
-	/* Returns the heuristly best fitting transformation of this actor relative to the given actor, already "quantized" so that the blocks 
-	* fit exactly to each other. However, this functions DOES NOT check whether blocks are overlapping or whether a connection exists -
-	* therefore, use the isMergableTo- or mergeTo-functions.
-	*
-	* Additionally, it's better to transform a smaller BlockBaseActor into a bigger one because the error of rotation based on this heuristic
-	* will be lower.
+	/*
+	* Returns the heuristically best fitting transform of this actor relative to the given actor,
+	* already "quantized" so that the blocks fit exactly to each other.
 	*/
 	FTransform getBlockTransformRelativeTo(ABlockBaseActor* actor);
 
-	/* Returns the dimension of the voxels (e.g. 2x2x2 for the Block2x2Actor. Keep in mind that a voxel has a size of 1x1x0.5). */
+	/* Returns the dimension of the voxels (e.g. 2x2x2 for the Block2x2Actor; a voxel is 1x1x0.5) */
 	UFUNCTION(BlueprintCallable)
 	FIntVector GetVoxelDimension();
 
-	/* Returns the volume of a voxel volume. This method already divides the z-axis by 2, so that the result is the real volume in cm^3 */
+	/* Returns the volume of a voxel volume.
+	 * This method divides the z-axis by 2, so that the result is the real volume in cm^3
+	 */
 	UFUNCTION(BlueprintCallable)
 	float getVoxelDimensionVolume();
 
-	/* Merges all the blocks of one actor to the given actor by copying them and deletes itself afterwards. So don't use a reference to
-	* this BlockBaseActor after you merged it to another actor.
-	*/
+	/*
+	 * Merges all the blocks of one actor into another, and destroys the source actor afterwards.
+	 * So never keep a reference to the merged-from actor after calling this function.
+	 */
 	UFUNCTION(BlueprintCallable)
 	bool mergeTo(ABlockBaseActor* actor);
 
-	/* Stores whether this actor was removed from the world previously.
-	* This is checked in the collision listeners to avoid function executions when this actor was already deleted.
-	*/
+	/* Stores whether this actor was removed from the world previously. */
 	bool mergeRemoved = false;
+
+	/* -------------- Ghost Preview Logic -------------- */
+
+public:
+	/* Which class to spawn as Ghost? (Can be set in the Editor/Blueprint) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Ghost")
+	TSubclassOf<AGhostPreview> GhostClass;
+
+	/* Currently active Ghost Actor (if any) */
+	UPROPERTY(BlueprintReadWrite, Category = "Ghost")
+	AGhostPreview * CurrentGhost = nullptr;
+
+	/* Shows a ghost preview if isMergableTo(...) = true and no Ghost is yet present */
+	UFUNCTION(BlueprintCallable, Category = "Ghost")
+	void ShowGhostPreview(ABlockBaseActor* OtherBlock);
+
+	/* Continuously update the Ghost's transform while the user is still holding the block */
+	UFUNCTION(BlueprintCallable, Category = "Ghost")
+	void UpdateGhost(ABlockBaseActor* OtherBlock);
+
+	/* Removes the Ghost Preview (if present) */
+	UFUNCTION(BlueprintCallable, Category = "Ghost")
+	void RemoveGhostPreview();
 };
