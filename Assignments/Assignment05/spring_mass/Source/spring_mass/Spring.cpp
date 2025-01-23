@@ -16,10 +16,29 @@ Spring::~Spring()
 }
 
 
-void
-Spring::Tick()
-{	
-	//FIXME: Force
-	//m_m1->m_currPos.Normalize()
-	//FVector::Dist()
+void Spring::Tick()
+{
+    FVector Delta = m_m1->m_currPos - m_m2->m_currPos;
+    float CurrentLength = Delta.Size();
+
+    if (CurrentLength == 0.0f)
+    {
+        return;
+    }
+
+    FVector direction = Delta / CurrentLength;
+
+    // Hook Law
+    FVector force_spring = -m_stiffness * (CurrentLength - m_spring_length_init) * direction;
+
+    // relative speed
+    FVector relativeVelocity = m_m1->m_velocity - m_m2->m_velocity;
+
+    // Damping Force
+    FVector force_damping = -m_damper * relativeVelocity;
+
+    FVector totalForce = force_spring + force_damping;
+
+    m_m1->addForce(totalForce);
+    m_m2->addForce(-totalForce);
 }
