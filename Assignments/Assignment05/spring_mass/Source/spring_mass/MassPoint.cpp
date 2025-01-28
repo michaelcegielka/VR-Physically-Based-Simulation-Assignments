@@ -17,7 +17,15 @@ m_mass(0.00005)
 void
 MassPoint::updateGravity()
 {
-	// FIXME: gravity
+	// ToDo b):  Fix gravity
+	if (m_movable)
+	{
+		FVector gravity = FVector(0.0f, 0.0f, -980.0f); // set punch force 20 -> 100 for more clear results
+
+		// F = m * g
+		FVector force_gravity = m_mass * gravity;
+		addForce(force_gravity);
+	}
 }
 
 void 
@@ -25,9 +33,12 @@ MassPoint::updateCurPos(float deltaT)
 {
 	if (m_movable)
 	{
-		// FIXME: Verlet
-		m_velocity += m_force / m_mass * deltaT;
-		m_currPos += m_velocity * deltaT;
+		// d) toDo: Verlet implementation
+		FVector acceleration = m_force / m_mass;
+		m_currPos += m_velocity * deltaT + 0.5f * acceleration * deltaT * deltaT;
+
+		FVector new_acceleration = m_force / m_mass;
+		m_velocity += 0.5 * (acceleration + new_acceleration) * deltaT;
 	}
 	m_force = FVector::ZeroVector;
 }

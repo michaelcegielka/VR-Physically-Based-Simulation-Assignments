@@ -149,5 +149,5 @@ void ASpringMassActor::Touch()
 {
 	// add force to the center
 	uint32 id = (cols / 2) * rows + (rows / 2);
-	massPoints[id].addForce(FVector(0, 20, 0));
+	massPoints[id].addForce(FVector(0, 100, 0));
 }
